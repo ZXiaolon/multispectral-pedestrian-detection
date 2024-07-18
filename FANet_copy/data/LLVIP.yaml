@@ -7,12 +7,15 @@
 #     └── coco128  ← downloads here (7 MB)
 
 
-# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
-path: C:\Workplace\DL\dataset\LLVIP  # dataset root dir
-train: ./images/train
-val: ./images/val
+# Train/val/test sets as
+# 1) dir: path/to/imgs,
+# 2) file: path/to/imgs.txt, or
+# 3) list: [path/to/imgs1, path/to/imgs2, ..]
+# path: C:\Workplace\DL\dataset\LLVIP  # dataset root dir
+path: C:\Workplace\DL\dataset\Pedestrian\LLVIP_fanet
+train: ./train
+val: ./val
 
-test:  # test images (optional)
 nc: 1
 # Classes
 names:

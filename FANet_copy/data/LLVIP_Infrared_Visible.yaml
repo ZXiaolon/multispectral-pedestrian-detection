@@ -1,0 +1,10 @@
+# kaist-pixel dataset
+
+train: C:\Workplace\DL\dataset\Pedestrian\LLVIP_fanet\train\Thermal
+val: C:\Workplace\DL\dataset\Pedestrian\LLVIP_fanet\val\Thermal
+
+# number of classes
+nc: 1
+
+# class names
+names: ['person']

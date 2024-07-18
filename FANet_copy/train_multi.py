@@ -61,7 +61,7 @@ def train(hyp, opt, device, tb_writer=None):
     plots = not opt.evolve  # create plots
     cuda = device.type != 'cpu'
     init_seeds(2 + rank)
-    with open(opt.data) as f:
+    with open(opt.data,'r',encoding='utf-8') as f:
         data_dict = yaml.load(f, Loader=yaml.SafeLoader)  # data dict
     is_coco = opt.data.endswith('coco.yaml')
 
@@ -118,8 +118,6 @@ def train(hyp, opt, device, tb_writer=None):
 
         # 导入weight
         state_dict = intersect_dicts(state_dict, model.state_dict(), exclude=exclude)  # intersect
-
-
 
 
 
