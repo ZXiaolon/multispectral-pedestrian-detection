@@ -9,7 +9,7 @@ ICAFusion: Iterative cross-attention guided feature fusion for multispectral obj
 
 论文：[下载](https://www.sciencedirect.com/science/article/pii/S0031320323006118)
 
-代码：[下载]([https://github.com/chanchanchan97/ICAFusion](https://github.com/chanchanchan97/ICAFusion))
+代码：[下载](https://github.com/chanchanchan97/ICAFusion)
 
 
 
@@ -39,7 +39,7 @@ MS-DETR: Multispectral Pedestrian Detection Transformer with Loosely Coupled Fus
 
 论文：[下载](https://arxiv.org/abs/2302.00290)
 
-代码：[下载](https://github.com/YinghuiXing/MS-DETR?utm_source=catalyzex.com)
+代码：[下载](https://github.com/YinghuiXing/MS-DETR)
 
 
 
@@ -81,4 +81,4 @@ Bright Channel Prior Attention for Multispectral Pedestrian Detection
 
 论文：[下载](https://arxiv.org/abs/2305.12845)
 
-代码：[下载](https://github.com/gzcch/Bright-Channel-Prior-Attention-for-Multispectral-Pedestrian-Detection?tab=readme-ov-file)
+代码：[下载](https://github.com/gzcch/Bright-Channel-Prior-Attention-for-Multispectral-Pedestrian-Detection)
