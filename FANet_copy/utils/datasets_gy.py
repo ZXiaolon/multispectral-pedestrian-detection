@@ -339,7 +339,7 @@ def img2label_paths(img_paths):
 
     # images   labels
     sa, sb = os.sep + 'Thermal' + os.sep, os.sep + 'Thermal_label_normalization' + os.sep  # /images/, /labels/ substrings
-
+    # print(['txt'.join(x.replace(sa, sb, 1).rsplit(x.split('.')[-1], 1)) for x in img_paths])
     return ['txt'.join(x.replace(sa, sb, 1).rsplit(x.split('.')[-1], 1)) for x in img_paths]
 
 def img2thermal_paths(img_paths):
@@ -351,7 +351,8 @@ def img2thermal_paths(img_paths):
     sa, sb = os.sep + 'Thermal' + os.sep, os.sep + 'RGB' + os.sep  # /images/, /labels/ substrings
 
     # note file format
-    return ['tif'.join(x.replace(sa, sb, 1).rsplit(x.split('.')[-1], 1)) for x in img_paths]
+    # return ['tif'.join(x.replace(sa, sb, 1).rsplit(x.split('.')[-1], 1)) for x in img_paths]
+    return ['jpg'.join(x.replace(sa, sb, 1).rsplit(x.split('.')[-1], 1)) for x in img_paths]
 
 
 
@@ -392,16 +393,13 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
         except Exception as e:
             raise Exception(f'{prefix}Error loading data from {path}: {e}\nSee {help_url}')
 
+        # 获取label
         # Check cache
         self.label_files = img2label_paths(self.img_files)  # labels
 
         # gy:multi_modal
-
         if self.multi_modal:
             self.thermal = img2thermal_paths(self.img_files) # thermals
-
-
-
 
 
         cache_path = (p if p.is_file() else Path(self.label_files[0]).parent).with_suffix('.cache')  # cached labels

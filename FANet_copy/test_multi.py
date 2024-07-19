@@ -41,14 +41,8 @@ def test(data,
     # Initialize/load model and set device
 
 
-
-
-
     # save_txt   = True
     save_json  = True
-
-
-
 
     input_data = {}
     training = model is not None
@@ -170,9 +164,7 @@ def test(data,
             # print(img[si].shape) # torch.Size([3, 544, 672])
             scale_coords(img[si].shape[1:], predn[:, :4], shapes[si][0], shapes[si][1])  # native-space pred
 
-
             # box = xyxy2xywh()
-
 
             # Append to text file
             if save_txt:
@@ -249,8 +241,6 @@ def test(data,
         # if plots and batch_i < 3:
         test_gy = True
         if plots:
-
-
             if test_gy:
                 img_names = os.path.basename(paths[0])
                 f = save_dir / f'{img_names}_labels.jpg'  # labels

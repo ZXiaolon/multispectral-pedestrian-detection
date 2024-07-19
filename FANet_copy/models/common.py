@@ -13,6 +13,7 @@ from utils.datasets import letterbox
 from utils.general import non_max_suppression, make_divisible, scale_coords, xyxy2xywh
 from utils.plots import color_list, plot_one_box
 from utils.torch_utils import time_synchronized
+import warnings
 
 # c1:in_channels   c2:out_channels
 # nn.Conv2d(self,in_channels,out_channels,kernel_size,stride=1,padding=0,dilation=1,groups=1,bias=True,padding_mode='zeros')
@@ -457,14 +458,11 @@ class Classify(nn.Module):
 
 
 
-## fix by:zxiaolon
-# time: 2023/10/11
-# error: AttributeError: Can't get attribute 'SPPF' on <module 'models.common' from 'C:\\Workplace\\DL\\code\\FANet\\models\\common.py'>
-
-import warnings
- 
- 
- 
+'''
+fix by:zxiaolon
+time: 2023/10/11
+error: AttributeError: Can't get attribute 'SPPF' on <module 'models.common' from 'C:\\Workplace\\DL\\code\\FANet\\models\\common.py'
+'''
 class SPPF(nn.Module):
     # Spatial Pyramid Pooling - Fast (SPPF) layer for YOLOv5 by Glenn Jocher
     def __init__(self, c1, c2, k=5):  # equivalent to SPP(k=(5, 9, 13))
