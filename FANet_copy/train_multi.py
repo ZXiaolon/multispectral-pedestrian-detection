@@ -92,13 +92,11 @@ def train(hyp, opt, device, tb_writer=None):
         exclude = ['anchor'] if (opt.cfg or hyp.get('anchors')) and not opt.resume else []  # exclude keys
         state_dict = ckpt['model'].float().state_dict()  # to FP32
 
-
         # 为双模态分支添加预训练权重
 
         # 第一次修改：双模态全部载入
         # 第二次修改：除去model4
         # 第三次修改，仅加载双管道部分
-
 
         # state_dict_1 = {}
         # for item in model.state_dict().keys():
@@ -115,13 +113,8 @@ def train(hyp, opt, device, tb_writer=None):
                     # state_dict.pop(item_rename)
         # exit()
 
-
-
-
         # 导入weight
         state_dict = intersect_dicts(state_dict, model.state_dict(), exclude=exclude)  # intersect
-
-
 
         # # # 添加双模态weight
         # for k in state_dict_1:
@@ -279,8 +272,6 @@ def train(hyp, opt, device, tb_writer=None):
     assert mlc < nc, 'Label class %g exceeds nc=%g in %s. Possible class labels are 0-%g' % (mlc, nc, opt.data, nc - 1)
 
     # gy:test_dataloader
-
-
     # Process 0
     if rank in [-1, 0]:
         testloader = create_dataloader(test_path, imgsz_test, batch_size * 2, gs, opt,  # testloader
@@ -392,11 +383,6 @@ def train(hyp, opt, device, tb_writer=None):
             input_data['thermal_img'] = thermal_img
             # print(imgs.shape,thermal_img.shape)
 
-
-
-
-
-
             # Forward
             with amp.autocast(enabled=cuda):
                 pred = model(input_data,Tag=False)  # forward
@@ -435,7 +421,6 @@ def train(hyp, opt, device, tb_writer=None):
                 elif plots and ni == 10 and wandb_logger.wandb:
                     wandb_logger.log({"Mosaics": [wandb_logger.wandb.Image(str(x), caption=x.name) for x in
                                                   save_dir.glob('train*.jpg') if x.exists()]})
-
             # end batch ------------------------------------------------------------------------------------------------
         # end epoch ----------------------------------------------------------------------------------------------------
 
@@ -646,8 +631,6 @@ if __name__ == '__main__':
         ckpt = torch.load(weight_gy, map_location=device)
         ckpt['epoch'] = 120
         torch.save(ckpt,weight_gy)
-
-
 
     # Train
     logger.info(opt)

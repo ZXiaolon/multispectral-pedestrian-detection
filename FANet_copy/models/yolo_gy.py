@@ -7,10 +7,6 @@ import sys
 from copy import deepcopy
 
 
-
-
-
-
 sys.path.append('../')
 sys.path.append('./')  # to run '$ python *.py' files in subdirectories
 logger = logging.getLogger(__name__)
@@ -257,8 +253,6 @@ class Model(nn.Module):
         return x
 
 
-
-
     def eca_layer(self, x, gamma=2, b=1):
         # eca-net
         # 原理：通过GPA（全局平均池化）转为1*1*C的向量，再通过1维conv进行权重更新
@@ -380,7 +374,6 @@ class Model(nn.Module):
             return self.forward_once(x, profile,Tag)  # single-scale inference, train
 
     def forward_once(self, x, profile=False,Tag=False):
-
 
         # 特征图可视化
         show = False
