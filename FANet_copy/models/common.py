@@ -78,9 +78,6 @@ class Conv_t(nn.Module):
 
 
 
-
-
-
 # 标准bottleneck
 # Res_Unit: feature map 尺寸不变,自动填充
 # Conv(c1, c_, 1, 1)  == conv1x1(c1,c_)+BN(c_)+SiLU()
@@ -231,8 +228,6 @@ class Focus_t(nn.Module):
         return y, yy
 
 
-
-
 # class Focus_cat(nn.Module):
 #     # Focus wh information into c-space
 #     def __init__(self, c1, c2, k=1, s=1, p=None, g=1, act=True):  # ch_in, ch_out, kernel, stride, padding, groups
@@ -250,10 +245,6 @@ class Focus_t(nn.Module):
 #         else:
 #             return self.conv_(torch.cat([x[..., ::2, ::2], x[..., 1::2, ::2], x[..., ::2, 1::2], x[..., 1::2, 1::2]], 1))
 #
-
-
-
-
 
 
 

@@ -97,8 +97,6 @@ class Detect(nn.Module):
 #         return x * y.expand_as(x)
 
 
-
-
 ## CBAM
 class ChannelAttention(nn.Module):
     def __init__(self, in_planes, ratio=16):
@@ -133,8 +131,6 @@ class SpatialAttention(nn.Module):
         return self.sigmoid(x)
 
 
-
-
 class Model(nn.Module):
     def __init__(self, cfg='yolov5s.yaml', ch=3, nc=None, anchors=None):  # model, input channels, number of classes
         super(Model, self).__init__()
@@ -165,14 +161,11 @@ class Model(nn.Module):
         # print(self.w1.requires_grad)
         # exit()
 
-
         # print([x.shape for x in self.forward(torch.zeros(1, ch, 64, 64))])
-
 
         # self.conv1x1 = nn.Conv2d(128,64,1)
         # self.BN = nn.BatchNorm2d(64)
         # self.SLU = nn.SiLU()
-
 
         # Build strides, anchors
         m = self.model[-1]  # Detect()
@@ -191,8 +184,6 @@ class Model(nn.Module):
             # m.stride = torch.tensor([s / x.shape[-2] for x in self.forward(torch.zeros(1, ch, s, s),Tag=True)])  # forward
             # tensor([8., 16., 32.])
             m.stride = torch.tensor([8., 16., 32.])   # yolov5s
-
-
 
             m.anchors /= m.stride.view(-1, 1, 1)
             check_anchor_order(m)
@@ -233,18 +224,12 @@ class Model(nn.Module):
         return x
 
 
-
-
-
-
     def CBAM(self,x):
         N, C, H, W = x.size()
         planes = C
 
         ca = ChannelAttention(planes).cuda()
         sa = SpatialAttention().cuda()
-
-
 
         x = ca(x) * x
         x = sa(x) * x
@@ -394,7 +379,6 @@ class Model(nn.Module):
         for m in self.model:
             # print(type(m))  # f, n, m, args
 
-
             # x中放多个值
             # [-1, 6],2     [-1, 4],2     [-1, 14],2      [-1, 10],2      [17, 20, 23],3
             # cat 操作(当前特征图和按序排好的第x个特征图)
@@ -419,7 +403,6 @@ class Model(nn.Module):
             #         x = m(x,x_t)
             #         y.append(x if m.i in self.save else None)
             #         continue
-
 
             if m.i <= 3:
                 # print(m.i, type(m))
