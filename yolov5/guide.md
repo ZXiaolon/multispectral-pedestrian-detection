@@ -8,8 +8,6 @@
 #     └── train
 #     └── val
 
-
-# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
 path: C:\Workplace\DL\dataset\Lowlight\LLVIP2  # dataset root dir
 train: images/train
 val: images/val
@@ -19,13 +17,14 @@ test:  # test images (optional)
 ## 训练
 测试脚本
 ```shell
-python train.py --weights yolov5s.pt --cfg yolov5s.yaml --data ./data/LLVIP.yaml --bach-size 8 --epochs 1 --img 640 --nosave --single-cls --name epochs_200
+python train.py --weights yolov5s.pt --cfg yolov5s.yaml --data ./data/LLVIP.yaml --batch-size 8 --epochs 1 --img 640 --nosave --single-cls --name epochs_200
 ```
 
 训练脚本
 ```shell
-python train.py --weights yolov5s.pt --cfg yolov5s.yaml --data ./data/LLVIP.yaml --batch-size 8 --epochs 200 --img 640 --nosave --single-cls --name epochs_200
+nohup python train.py --weights yolov5s.pt --cfg yolov5s.yaml --data ./data/LLVIP.yaml --batch-size 16 --epochs 200 --img 640 --nosave --single-cls --name yolo_train_epochs_200 > record.log 2>&1 &
 ```
+nohup后台挂载
 
 ## 验证
 
